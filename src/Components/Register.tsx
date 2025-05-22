@@ -28,13 +28,16 @@ const Register = () => {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
     };
-    console.log(`register url: ${myUrl}/api/user/register`);
+    console.log(`register url: ${myUrl}/api/User/register`);
     console.log( userData);
 
     try {
-      const res = await axios.post<ResponseType>(`${myUrl}/api/user/register`, userData, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await axios.post<ResponseType>(`${myUrl}/api/User/register`, userData
+      //   , {
+      //   // headers: { "Content-Type": "application/json" },
+      // }
+    );
+
 
       dispatch(setToken(res.data.token));
       alert("Registration successful!");
