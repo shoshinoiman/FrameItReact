@@ -29,6 +29,7 @@ const Register = () => {
       password: passwordRef.current?.value,
     };
     console.log(`register url: ${myUrl}/api/user/register`);
+    console.log( userData);
 
     try {
       const res = await axios.post<ResponseType>(`${myUrl}/api/user/register`, userData, {
