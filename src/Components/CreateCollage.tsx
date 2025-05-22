@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { saveAs } from "file-saver";
 import html2canvas from "html2canvas";
-import axios from "axios";
+// import axios from "axios";
 import { ImageUpload, SaveCollage } from "./Services/CollageService";
 import { useSelector } from "react-redux";
 import { RootState } from "../Stores/Store";
-import { image } from "html2canvas/dist/types/css/types/image";
-const myUrl = import.meta.env.VITE_SERVERURL
+// import { image } from "html2canvas/dist/types/css/types/image";
+// const myUrl = import.meta.env.VITE_SERVERURL
 
 // import { User } from "../Moldes/User";
 // import { ImageSaveAsync } from "./CollageService";
@@ -68,35 +68,35 @@ console.log(user);
         }
     };
 
-    const deleteImage = (id: string) => {
-        setImages((prevImages) => {
-            const updatedImages = { ...prevImages };
-            delete updatedImages[id];
-            const updatedOrder = imageOrder.filter((imgId) => imgId !== id);
-            setImageOrder(updatedOrder);
-            return updatedImages;
-        });
-    };
+    // const deleteImage = (id: string) => {
+    //     setImages((prevImages) => {
+    //         const updatedImages = { ...prevImages };
+    //         delete updatedImages[id];
+    //         const updatedOrder = imageOrder.filter((imgId) => imgId !== id);
+    //         setImageOrder(updatedOrder);
+    //         return updatedImages;
+    //     });
+    // };
 
     const clearAllImages = () => {
         setImages({});
         setImageOrder([]);
     };
 
-    const getPresignedUrl = async (blob: Blob): Promise<string | null> => {
-        const fileName = 'collage-' + Date.now() + '.png';
-        const contentType = blob.type;
+    // const getPresignedUrl = async (blob: Blob): Promise<string | null> => {
+    //     const fileName = 'collage-' + Date.now() + '.png';
+    //     const contentType = blob.type;
 
-        try {
-            const response = await axios.get<{ url: string }>('myUrl/api/upload/presigned-url', {
-                params: { fileName, contentType }
-            });
-            return response.data.url;
-        } catch (error) {
-            console.error('Error getting presigned URL', error);
-            return null;
-        }
-    };
+    //     try {
+    //         const response = await axios.get<{ url: string }>('myUrl/api/upload/presigned-url', {
+    //             params: { fileName, contentType }
+    //         });
+    //         return response.data.url;
+    //     } catch (error) {
+    //         console.error('Error getting presigned URL', error);
+    //         return null;
+    //     }
+    // };
 
     // const uploadToS3 = async (collageBlob: Blob) => {
     //     ImageSaveAsync(collageBlob);

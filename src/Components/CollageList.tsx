@@ -176,7 +176,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../Stores/Store";
 import { DeleteCollage, GetAllCollagesByUserId } from "./Services/CollageService";
 import { Collage } from "../Moldes/Collage";
-import { Container, Card, CardMedia, CardContent, Typography, Button, Grid, Dialog, DialogContent, DialogActions, IconButton } from "@mui/material";
+import { Container, Card, CardMedia, CardContent, Typography, Button, Grid, Dialog, DialogContent, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';

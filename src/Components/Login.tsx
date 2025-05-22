@@ -27,7 +27,7 @@ const Login = () => {
     };
 
     try {
-      const res = await axios.post<ResponseType>("myUrl/api/user/login", userData, {
+      const res = await axios.post<ResponseType>(`${myUrl}/api/user/login`, userData, {
         headers: { "Content-Type": "application/json" },
       });
 
