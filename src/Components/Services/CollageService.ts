@@ -365,7 +365,7 @@ export const SaveCollage = async (userId: string | undefined, title: string) => 
     }
 };
 
-export const saveCollageToServer = async (userId: string | undefined, title: string, imageUrl: string) => {
+export const saveCollageToServer = async (userId: string | undefined, _title: string, imageUrl: string) => {
     console.log("kkkkkkkkkkkkk");
 
     if (!userId) {
@@ -381,7 +381,7 @@ export const saveCollageToServer = async (userId: string | undefined, title: str
 
     try {
         const response = await axios.post(
-            "myUrl/api/collage/create",
+            `${myUrl}/api/collage/create`,
             collageDto,
             {
                 headers: {
@@ -402,13 +402,13 @@ export const saveCollageToServer = async (userId: string | undefined, title: str
     }
 };
 
-const getPresignedUrl = async (blob: Blob): Promise<string | null> => {
+const getPresignedUrl = async (_blob: Blob): Promise<string | null> => {
     const fileName = "gallery.png";
-    const contentType = blob.type;
+    // const contentType = blob.type;
 
     try {
         const response = await axios.get<{ url: string }>(
-            "myUrl/api/upload/presigned-url",
+            `${myUrl}/api/upload/presigned-url`,
             { params: { fileName } }
         );
         return response.data.url;
@@ -435,7 +435,7 @@ const getPresignedUrl = async (blob: Blob): Promise<string | null> => {
 
 export const GetAllCollagesByUserId = async (userId: number): Promise<Collage[]> => {
     try {
-        const response = await axios.get(`myUrl/api/collage/user/${userId}`);
+        const response = await axios.get(`${myUrl}/api/collage/user/${userId}`);
 
         console.log("response ", response);
 
@@ -451,7 +451,7 @@ export const GetAllCollagesByUserId = async (userId: number): Promise<Collage[]>
                     console.log("לפני");
 
                     console.log(collage.collageUrl);
-                    const urlResponse = await axios.get(`myUrl/api/upload/presigned-get-url`, {
+                    const urlResponse = await axios.get(`${myUrl}/api/upload/presigned-get-url`, {
 
                         params: { fileName: collage.title },
                     });
@@ -501,7 +501,7 @@ export const DeleteCollageFromData = async (collageId: number) => {
 
 
         const response = await axios.delete(
-            `myUrl/api/collage/${collageId}`,  // אין צורך להוסיף את המילה 'DELETE' ל-URL
+            `${myUrl}/api/collage/${collageId}`,  // אין צורך להוסיף את המילה 'DELETE' ל-URL
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -525,7 +525,7 @@ export const DeleteCollage = async (collageId: number, fileName: string): Promis
         console.error("❌ לא נמחק מהשרת!!");
 
         if (response === null) { return false }
-        const urlResponse = await axios.get(`myUrl/api/upload/presigned-delete-url`, {
+        const urlResponse = await axios.get(`${myUrl}/api/upload/presigned-delete-url`, {
             params: { fileName },
         });
 

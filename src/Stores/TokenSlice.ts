@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';  // שימוש ב-`jwtDecode`
 import { User } from '../Moldes/User'; // ייבוא טיפוס `User`
-import { Collage } from '../Moldes/Collage';
-import { GetAllCollagesByUserId } from '../Components/Services/CollageService';
+// import { Collage } from '../Moldes/Collage';
+// import { GetAllCollagesByUserId } from '../Components/Services/CollageService';
 
 interface TokenState {
   token: string | null;

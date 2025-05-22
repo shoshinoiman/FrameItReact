@@ -1,6 +1,6 @@
-import { Collage } from "../Moldes/Collage";
+// import { Collage } from "../Moldes/Collage";
 
-interface CollageState {
-  collages: Collage[] | null;
-  userId:number|null
-}
+// interface CollageState {
+//   collages: Collage[] | null;
+//   userId:number|null
+// }
