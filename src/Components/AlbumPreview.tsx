@@ -126,11 +126,11 @@ const AlbumPreview: React.FC<AlbumPreviewProps> = ({
           position={{ x: image.x, y: image.y }}
           size={{ width: image.width, height: image.height }}
           bounds="parent"
-          onDragStop={(e, d) => {
+          onDragStop={(_e, d) => {
             updateImage(image.id, "x", d.x);
             updateImage(image.id, "y", d.y);
           }}
-          onResizeStop={(e, direction, ref, delta, position) => {
+          onResizeStop={(_e, _direction, ref, _delta, position) => {
             updateImage(image.id, "width", ref.offsetWidth);
             updateImage(image.id, "height", ref.offsetHeight);
             updateImage(image.id, "x", position.x);
