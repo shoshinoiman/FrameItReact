@@ -42,7 +42,9 @@ const Register = () => {
       dispatch(setToken(res.data.token));
       alert("Registration successful!");
       navigate("/profile");
-    } catch (error: any) {
+    } 
+    
+    catch (error: any) {
       if (error.response?.data?.message) {
         alert(error.response.data.message);
       } else {

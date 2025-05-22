@@ -433,9 +433,14 @@ const getPresignedUrl = async (_blob: Blob): Promise<string | null> => {
 // };
 
 
-export const GetAllCollagesByUserId = async (userId: number): Promise<Collage[]> => {
+export const GetAllCollagesByUserId = async (userId: number,token:string|null): Promise<Collage[]> => {
     try {
-        const response = await axios.get(`${myUrl}/api/collage/user/${userId}`);
+        const response = await axios.get(`${myUrl}/api/Collage/user/${userId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            });
 
         console.log("response ", response);
 

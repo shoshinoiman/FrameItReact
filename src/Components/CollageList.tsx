@@ -184,7 +184,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const CollageList: React.FC = () => {
   const userId1 = useSelector((state: RootState) => state.token.user?.id); 
   const userId = userId1 ? parseInt(userId1, 10) : 0; 
-
+  const token = useSelector((state: RootState) => state.token.token);
   const [collages, setCollages] = useState<Collage[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
@@ -197,10 +197,10 @@ const CollageList: React.FC = () => {
         return;
       }
       setLoading(true);
-      try {
-        const data = await GetAllCollagesByUserId(userId);
+      try {const data = await GetAllCollagesByUserId(userId,token);
         setCollages(data);
       } catch (error) {
+        
         console.error("Error fetching collages:", error);
       }
       setLoading(false);
