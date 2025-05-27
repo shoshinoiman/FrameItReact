@@ -444,7 +444,10 @@ export const GetAllCollagesByUserId = async (userId: number,token:string|null): 
 
         console.log("response ", response);
 
-        const collages: Collage[] = response.data.collages;
+        // const collages: Collage[] = response.data.collages;
+        const collages: Collage[] = response.data.collages.$values; // מחלץ את המערך מהאובייקט
+        console.log("collages:", collages);
+        
         console.log(collages);
 
         // מבצע קריאה לשרת כדי לקבל Pre-signed URL לכל קולאז'
