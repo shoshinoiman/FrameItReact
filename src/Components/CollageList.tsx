@@ -237,7 +237,47 @@ const CollageList: React.FC = () => {
 
   if (userId === 0) return <p>עליך להתחבר כדי לראות את הקולאז'ים שלך.</p>; 
   if (loading) return <p>טוען קולאז'ים...</p>;
-  if (collages.length === 0) return <p>לא נמצאו קולאז'ים.</p>;
+  if (collages.length === 0) {
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "#121212",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "center",
+          overflow: "hidden"
+        }}
+      >
+        <h1
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "2.5rem",
+            fontWeight: "bold",
+            background: "linear-gradient(45deg, #ff4081, #ff9100)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            marginBottom: "0.5rem"
+          }}
+        >
+          No Collages Yet
+        </h1>
+        <p
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "1.2rem",
+            color: "#ccc"
+          }}
+        >
+          Start creating your first collage now!
+        </p>
+      </div>
+    );
+  }
+  
 
   return (
     <Container maxWidth="xl" style={{ padding: "3rem", textAlign: "center", backgroundColor: "#121212", color: "white", overflowX: "hidden" }}>

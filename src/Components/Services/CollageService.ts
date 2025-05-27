@@ -433,13 +433,13 @@ const getPresignedUrl = async (_blob: Blob): Promise<string | null> => {
 // };
 
 
-export const GetAllCollagesByUserId = async (userId: number,token:string|null): Promise<Collage[]> => {
+export const GetAllCollagesByUserId = async (userId: number, token: string | null): Promise<Collage[]> => {
     try {
         const response = await axios.get(`${myUrl}/api/Collage/user/${userId}`,
             {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
 
         console.log("response ", response);
@@ -447,7 +447,7 @@ export const GetAllCollagesByUserId = async (userId: number,token:string|null): 
         // const collages: Collage[] = response.data.collages;
         const collages: Collage[] = response.data.collages.$values; // מחלץ את המערך מהאובייקט
         console.log("collages:", collages);
-        
+
         console.log(collages);
 
         // מבצע קריאה לשרת כדי לקבל Pre-signed URL לכל קולאז'
@@ -509,11 +509,14 @@ export const DeleteCollageFromData = async (collageId: number) => {
 
 
         const response = await axios.delete(
-            `${myUrl}/api/collage/${collageId}`,  // אין צורך להוסיף את המילה 'DELETE' ל-URL
+            `${myUrl}/api/collage/${collageId}`,
             {
+                // headers: {
+                //     "Content-Type": "application/json",
+                //     "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                // },
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             }
         );
@@ -530,7 +533,7 @@ export const DeleteCollage = async (collageId: number, fileName: string): Promis
     try {
         // בקשת PreSigned URL למחיקה
         const response = await DeleteCollageFromData(collageId);
-        console.error("❌ לא נמחק מהשרת!!");
+        // console.error("❌ לא נמחק מהשרת!!");
 
         if (response === null) { return false }
         const urlResponse = await axios.get(`${myUrl}/api/upload/presigned-delete-url`, {
